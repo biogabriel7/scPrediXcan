@@ -51,6 +51,8 @@ For the details, check the code and tutorial [here](https://github.com/hakyimlab
 #### Step2: Linearizing the ctPred into l-ctPred  
 scPrediXcan uses [PrediXcan implementation](https://www.nature.com/articles/ng.3367) to train an elastic-net model for ctPred linearization. In this step, we utilize the genotype data from 448 Geuvadis individuals along with ctPred-predicted gene expression profiles to fit an elastic-net model for the corresponding cell type. In principle, alternative genotype reference panels can also be employed at this stage. 
 
+This is our [pipeline](https://github.com/hakyimlab/shared_pipelines/tree/main/enformer_pipeline) to generate personalized epigenomic features using Enformer with genotype data (.vcf file). Once users calculate the personalized epigenomics, please use the ctPred models from step 1 to get the in-silico personalized gene expressions. Then, users can generate l-ctPred according to the following instructions.
+
 Here is a nextflow pipeline for l-ctPred generation. The inputs include a genotype file and a ctPred-predicted cell-type-specific gene expression file. The outputs consist of a transcriptome model SQLite database (i.e., l-ctPred) and a SNP covariance matrix file. These output files are intended for use in the final association analysis step.
 Here are the detailed procedures of step-2:
 
@@ -105,6 +107,11 @@ Pipeline details:
 This step should take less than a minute on a 3GHZ computer. For the full specification of command line parameters, you can check the [wiki](https://github.com/hakyimlab/MetaXcan/wiki/MetaXcan's-Command-Line-Reference) and the [turtorial](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial). The output csv file is the TWAS result, and the detailed descriptions of each column are [here](https://github.com/hakyimlab/MetaXcan/wiki/S-PrediXcan-Command-Line-Tutorial)
 
 You can download example data [here](https://uchicago.box.com/s/us7qhue3juubq66tktpogeansahxszg9). This may take a few minutes depending on your connection: it has to download approximately 200Mb worth of data. Downloaded data will include all the input data needed.
+
+#
+### Example files:
+
+Some example input/output files from step1 to step3 are in this [box folder](https://uchicago.box.com/s/hsrb9zenyhpckm6cemxl96if02uy8peu).
 
 
 # 
